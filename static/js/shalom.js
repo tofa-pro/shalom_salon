@@ -1,6 +1,6 @@
         // Initialize systems
-        const gallerySystem = new GallerySystem();
-        const appSystem = new AppointmentSystem();
+       // const gallerySystem = new GallerySystem();
+       // const appSystem = new AppointmentSystem();
         const adminSystem = new AdminSystem();
 
         // Make systems globally accessible

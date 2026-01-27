@@ -1018,7 +1018,7 @@
         .admin-panel {
             display: none;
         }
-
+       
         .admin-panel.active {
             display: block;
         }

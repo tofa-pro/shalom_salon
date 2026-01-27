@@ -9,7 +9,7 @@
                 this.currentAdmin = null;
                 this.init();
             }
-            
+                     
             init() {
                 this.setupEventListeners();
                 this.setupClickHandlers();
@@ -573,7 +573,6 @@
                         description: 'Custom and intricate braiding designs.'
                     }
                 ];
-                
                 services.forEach(service => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
