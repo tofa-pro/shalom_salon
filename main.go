@@ -27,7 +27,10 @@ func setupAPI() {
 	Manager := controller.StartM(tpl)
 	// Serve static files (CSS, JS)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	//UI
 	http.HandleFunc("/", Manager.IndexHandler)
+	http.HandleFunc("/admin", Manager.AdminHandler)
 
 	//Device
 	http.HandleFunc("/services", Manager.ServiceAll)

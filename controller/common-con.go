@@ -20,3 +20,9 @@ func (web *Tm) IndexHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
+func (web *Tm) AdminHandler(w http.ResponseWriter, r *http.Request) {
+	err := web.Tmp.ExecuteTemplate(w, "admin.html", nil)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+}

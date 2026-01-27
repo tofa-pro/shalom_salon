@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/shalom.css">
+    <script type="text/javascript" src="/static/js/adminsystem.js" defer></script>
+    <script type="text/javascript" src="/static/js/appointments.js" defer></script>
+    <script type="text/javascript" src="/static/js/gallerys.js" defer></script>
+    <script type="text/javascript" src="/static/js/shalom.js" defer></script>
+</head>
+<body>
+     <!-- Admin Dashboard -->
+     <div class="admin-dashboard" id="adminDashboard">
+        <div class="admin-header">
+            <div class="admin-logo">
+                <i class="fas fa-crown"></i>
+                <span>Admin Dashboard</span>
+            </div>
+            <div class="admin-nav">
+                <span id="adminGreeting">Welcome, Admin</span>
+                <button class="btn btn-small btn-danger" id="logoutAdminBtn">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+        
+        <div class="admin-main">
+            <div class="admin-sidebar">
+                <div class="admin-profile">
+                    <div class="admin-avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h4>Administrator</h4>
+                    <p>Business Owner</p>
+                </div>
+                
+                <ul class="admin-menu">
+                    <li>
+                        <a href="#dashboard" class="active" data-panel="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#appointments" data-panel="appointments">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>Appointments</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#customers" data-panel="customers">
+                            <i class="fas fa-users"></i>
+                            <span>Customers</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#services" data-panel="services">
+                            <i class="fas fa-cut"></i>
+                            <span>Services</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gallery" data-panel="gallery">
+                            <i class="fas fa-images"></i>
+                            <span>Gallery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#business" data-panel="business">
+                            <i class="fas fa-store"></i>
+                            <span>Business Info</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" data-panel="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="admin-content">
+                <!-- Dashboard Panel -->
+                <div class="admin-panel active" id="dashboardPanel">
+                    <h2>Dashboard Overview</h2>
+                    
+                    <div class="admin-stats">
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-icon total">
+                                <i class="fas fa-calendar"></i>
+                            </div>
+                            <div class="admin-stat-number" id="adminTotalAppointments">0</div>
+                            <div class="admin-stat-label">Total Appointments</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-icon today">
+                                <i class="fas fa-calendar-day"></i>
+                            </div>
+                            <div class="admin-stat-number" id="adminTodayAppointments">0</div>
+                            <div class="admin-stat-label">Today's Appointments</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-icon pending">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="admin-stat-number" id="adminPendingAppointments">0</div>
+                            <div class="admin-stat-label">Pending</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-icon confirmed">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="admin-stat-number" id="adminConfirmedAppointments">0</div>
+                            <div class="admin-stat-label">Confirmed</div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="admin-stat-icon cancelled">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="admin-stat-number" id="adminCancelledAppointments">0</div>
+                            <div class="admin-stat-label">Cancelled</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div>
+                            <h3>Today's Schedule</h3>
+                            <div class="table-container">
+                                <table class="data-table" id="adminTodayTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Time</th>
+                                            <th>Customer</th>
+                                            <th>Service</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminTodayBody">
+                                        <!-- Today's appointments will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3>Recent Bookings</h3>
+                            <div class="table-container">
+                                <table class="data-table" id="adminRecentTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Customer</th>
+                                            <th>Service</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="adminRecentBody">
+                                        <!-- Recent appointments will be loaded here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Appointments Panel -->
+                <div class="admin-panel" id="appointmentsPanel">
+                    <h2>Appointment Management</h2>
+                    
+                    <div style="margin-bottom: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <input type="text" id="appointmentSearch" class="form-control" placeholder="Search appointments..." style="flex: 1; min-width: 200px;">
+                        <select id="statusFilter" class="form-control" style="width: 200px;">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <input type="date" id="dateFilter" class="form-control" style="width: 200px;">
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table" id="adminAppointmentsTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Customer</th>
+                                    <th>Phone</th>
+                                    <th>Service</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminAppointmentsBody">
+                                <!-- All appointments will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Customers Panel -->
+                <div class="admin-panel" id="customersPanel">
+                    <h2>Customer Management</h2>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <input type="text" id="customerSearch" class="form-control" placeholder="Search customers...">
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table" id="adminCustomersTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Appointments</th>
+                                    <th>Last Visit</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminCustomersBody">
+                                <!-- Customers will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Services Panel -->
+                <div class="admin-panel" id="servicesPanel">
+                    <h2>Service Management</h2>
+                    
+                    <div style="margin-bottom: 2rem;">
+                        <button class="btn" id="addServiceBtn">
+                            <i class="fas fa-plus"></i> Add New Service
+                        </button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table" id="adminServicesTable">
+                            <thead>
+                                <tr>
+                                    <th>Service Name</th>
+                                    <th>Duration</th>
+                                    <th>Price Range</th>
+                                    <th>Description</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminServicesBody">
+                                <!-- Services will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Gallery Panel -->
+                <div class="admin-panel" id="galleryPanel">
+                    <h2>Gallery Management</h2>
+                    
+                    <div class="gallery-upload">
+                        <h3>Upload New Image</h3>
+                        <form id="galleryUploadForm">
+                            <div class="upload-area" id="uploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload or drag and drop</p>
+                                <p style="font-size: 0.9rem;">Recommended: JPG, PNG up to 5MB</p>
+                                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                            </div>
+                            
+                            <img id="imagePreview" src="" alt="Preview">
+                            
+                            <div class="form-group">
+                                <label for="imageTitle">Image Title</label>
+                                <input type="text" id="imageTitle" class="form-control" placeholder="Enter image title" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="imageCategory">Category</label>
+                                <select id="imageCategory" class="form-control" required>
+                                    <option value="">Select category</option>
+                                    <option value="Box Braids">Box Braids</option>
+                                    <option value="Cornrows">Cornrows</option>
+                                    <option value="Crochet Braids">Crochet Braids</option>
+                                    <option value="Twists & Locs">Twists & Locs</option>
+                                    <option value="Men's Styles">Men's Styles</option>
+                                    <option value="Specialty Styles">Specialty Styles</option>
+                                    <option value="Before & After">Before & After</option>
+                                    <option value="Studio">Studio</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="imageDescription">Description (Optional)</label>
+                                <textarea id="imageDescription" class="form-control" rows="3" placeholder="Add a description for this image"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">
+                                <i class="fas fa-upload"></i> Upload Image
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="gallery-admin">
+                        <h3>Gallery Images</h3>
+                        <div class="gallery-admin-grid" id="adminGalleryGrid">
+                            <!-- Gallery images will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Business Info Panel -->
+                <div class="admin-panel" id="businessPanel">
+                    <h2>Business Information</h2>
+                    
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <form id="businessInfoForm">
+                            <div class="form-group">
+                                <label class="form-label">Business Name</label>
+                                <input type="text" id="businessName" class="form-control" value="Shalom Braids" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" id="businessPhone" class="form-control" value="(404) 555-1234" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" id="businessEmail" class="form-control" value="info@shalombraids.com" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Business Address</label>
+                                <textarea id="businessAddress" class="form-control" rows="3" required>1054 Main St ste g
+Stone Mountain, Georgia 30083</textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Business Hours</label>
+                                <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+                                    <div style="flex: 1;">
+                                        <label class="form-label">Monday - Saturday</label>
+                                        <input type="text" id="businessHoursWeekday" class="form-control" value="9:00 AM - 7:00 PM" required>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <label class="form-label">Sunday</label>
+                                        <input type="text" id="businessHoursSunday" class="form-control" value="Appointment Only" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">About Text</label>
+                                <textarea id="businessAbout" class="form-control" rows="4" required>Where artistry meets tradition in every braid. Crafting beautiful styles since 2018.</textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Settings Panel -->
+                <div class="admin-panel" id="settingsPanel">
+                    <h2>Admin Settings</h2>
+                    
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <div class="form-group">
+                            <h3>Admin Password</h3>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                                <div>
+                                    <label class="form-label">Current Password</label>
+                                    <input type="password" id="currentPassword" class="form-control">
+                                </div>
+                                <div>
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" id="newPassword" class="form-control">
+                                </div>
+                            </div>
+                            <button class="btn btn-small" id="changePasswordBtn">
+                                Change Password
+                            </button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <h3>Data Management</h3>
+                            <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+                                <button class="btn btn-outline" id="exportDataBtn">
+                                    <i class="fas fa-download"></i> Export Data
+                                </button>
+                                <button class="btn btn-outline" id="importDataBtn">
+                                    <i class="fas fa-upload"></i> Import Data
+                                </button>
+                                <button class="btn btn-danger" id="clearDataBtn">
+                                    <i class="fas fa-trash"></i> Clear All Data
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
