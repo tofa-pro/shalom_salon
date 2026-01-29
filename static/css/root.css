@@ -1,0 +1,28 @@
+:root {
+    --bg:#f1f3f6;
+    --blue1 : #4e69dd;
+    --white : #ffffff;
+    --white1 : #ffffff;
+    --base-clr : #ffffff;
+    --black1 :#000000;
+    --line-clr : #42434a;
+    --line2-clr : #e7e8eb;
+    --hover-clr : #4e69dd;
+    --hover2-clr : #e1e1e6;
+    --icon-clr : #ffff;
+    --accent-clr : #5e63ff;
+    --text-clr : #6f6f73;
+    --text2-clr : #efeff6;
+    --focus-clr : #548af6;
+    --secondary-text-clr : #b0b3c1;
+    --gradient-1:  linear-gradient(135deg, rgba(114, 80, 236, 0.8), rgba(59, 27, 239, 0.8));
+}
+   /*now , make it responsive desing */
+   @media(max-width:991px){
+    .cardBox{
+        grid-template-columns: repeat(2,1fr);
+    }
+   .dashboardtable{
+    grid-template-columns: repeat(1,1fr);
+   }
+  }
