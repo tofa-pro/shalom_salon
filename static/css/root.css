@@ -1,6 +1,7 @@
 :root {
     --bg:#f1f3f6;
     --blue1 : #4e69dd;
+    --accent: #7EC8E3;
     --white : #ffffff;
     --white1 : #ffffff;
     --base-clr : #ffffff;
@@ -16,6 +17,8 @@
     --focus-clr : #548af6;
     --secondary-text-clr : #b0b3c1;
     --gradient-1:  linear-gradient(135deg, rgba(114, 80, 236, 0.8), rgba(59, 27, 239, 0.8));
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
 }
    /*now , make it responsive desing */
    @media(max-width:991px){

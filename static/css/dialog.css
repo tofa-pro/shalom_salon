@@ -1,0 +1,121 @@
+dialog {
+    margin: auto;
+    inset: 0;
+    border: none;
+    border-radius: 1rem;
+    padding: 0;
+    background: #3c3d58;
+    background: linear-gradient(180deg, rgba(104, 58, 241, 0.8), rgba(7, 17, 74, 0));
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(4px);
+  }
+  .creationform{
+    padding: 2rem;
+   }
+   .creationform .cardHeader{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     margin-bottom: 0.5rem;
+   }
+   .creationform .cardlan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .creationform .cardlan .lanbox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px 5px;
+    border-radius: 4px;
+    background: linear-gradient(180deg, rgba(20, 73, 105, 0.7), rgba(10, 27, 119, 0.7));
+  }
+   .creationform .cardHeader h2{
+     font-size: 1.5rem;
+     font-weight: 600;
+   }
+   .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #f57a7a;
+    padding: 0.25rem;
+    border-radius: 0.25rem;
+    transition: background 0.2s ease;
+  }
+  
+  .close-btn:hover {
+    background: var(--surface-color);
+  }
+   .formflex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+   }
+   .form-group {
+     margin-bottom: 1.5rem;
+   }
+   
+   .form-label {
+     display: block;
+     margin-bottom: 0.5rem;
+     font-weight: 500;
+     color: var(--text-color);
+   }
+   
+   .form-input, .form-textarea,.form-branch {
+     width: 100%;
+     padding: 0.75rem;
+     border: 1px solid var(--line-clr);
+     border-radius: 0.5rem;
+     border: 1px solid #fff;
+     font-size: 1rem;
+     transition: border-color 0.2s ease;
+     background: var(--base-color);
+     color: var(--text-color);
+   }
+   .form-branch option{
+    background-color: rgba(10, 5, 60, 0.8);
+   }
+   .form-input:focus, .form-textarea:focus, .form-branch:focus {
+     outline: none;
+     border-color: var(--brand-color);
+   }
+   
+   .form-textarea {
+     resize: vertical;
+     min-height: 120px;
+   }
+   
+   .dialog-actions {
+     display: flex;
+     gap: 1rem;
+     justify-content: flex-end;
+   }
+   
+   .cancel-btn, .save-btn {
+     padding: 0.75rem 1.5rem;
+     border: none;
+     border-radius: 0.5rem;
+     cursor: pointer;
+     font-weight: 500;
+     transition: all 0.2s ease;
+   }
+   .save-btn {
+    background: linear-gradient(90deg, rgba(123, 240, 96, 0.7), rgba(31, 203, 206, 0.7));
+     color: white;
+   }

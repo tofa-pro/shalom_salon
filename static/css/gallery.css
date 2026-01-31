@@ -1,0 +1,33 @@
+.upload-area {
+    border: 2px dashed var(--accent);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.upload-area:hover {
+    border-color: var(--secondary);
+    background: rgba(255,107,139,0.05);
+}
+
+.upload-area i {
+    font-size: 3rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.upload-area p {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+#imagePreview {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: var(--border-radius);
+    display: none;
+    margin: 1rem auto;
+}
