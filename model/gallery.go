@@ -6,31 +6,31 @@ import (
 	"project/shalomB/config"
 )
 
-type Wservice struct {
+type Wgallery struct {
 	Id          int    `json:"id"`
 	ServiceName string `json:"servicename"`
 	Duration    string `json:"duration"`
 	PriceRange  string `json:"pricerange"`
 	Description string `json:"description"`
 }
-type Service struct {
+type Gallery struct {
 	Id          int
 	ServiceName sql.NullString
 	Duration    sql.NullString
 	PriceRange  sql.NullString
 	Description sql.NullString
 }
-type Wservices struct {
+type Wgallerys struct {
 	Conn     *config.Conn
-	Wservice *Wservice
+	Wservice *Wgallery
 }
 
-func NewService() *Wservices {
+func NewGallery() *Wservices {
 	return &Wservices{
 		Conn: config.Connect(),
 	}
 }
-func (in *Wservices) CreateService(req Wservice) int64 {
+func (in *Wservices) CreateGallery(req Wservice) int64 {
 	var ins *sql.Stmt
 	db = in.Conn.GetDB()
 	defer db.Close()
@@ -50,7 +50,7 @@ func (in *Wservices) CreateService(req Wservice) int64 {
 	return rowAffec
 }
 
-func (in *Wservices) SelectAllService() []Service {
+func (in *Wservices) SelectAllGallery() []Service {
 	stmt := "SELECT * FROM service"
 	db = in.Conn.GetDB()
 	defer db.Close()
@@ -72,7 +72,7 @@ func (in *Wservices) SelectAllService() []Service {
 	}
 	return products
 }
-func (in *Wservices) DeleteService(id int) int64 {
+func (in *Wservices) DeleteGallery(id int) int64 {
 	db = in.Conn.GetDB()
 	defer db.Close()
 	del, err := db.Prepare("DELETE FROM `shalomB`.`service` WHERE (`id` = ?);")
@@ -90,7 +90,7 @@ func (in *Wservices) DeleteService(id int) int64 {
 	}
 	return rowsAff
 }
-func (in *Wservices) UpdateService(req Wservice) int64 {
+func (in *Wservices) UpdateGallery(req Wservice) int64 {
 	upStmt := "UPDATE `shalomB`.`service` SET `servicename`= ?,`duration`= ?,`pricerange`= ?,`servicedesc`= ? WHERE (`id` = ?);"
 	db = in.Conn.GetDB()
 	defer db.Close()

@@ -7,7 +7,7 @@ import (
 	"project/shalomB/model"
 )
 
-func (web *Tm) ServiceCreate(w http.ResponseWriter, r *http.Request) {
+func (web *Tm) GalleryCreate(w http.ResponseWriter, r *http.Request) {
 	var req model.Wservice
 	Inst := model.NewService()
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -24,7 +24,7 @@ func (web *Tm) ServiceCreate(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(data)
 }
-func (web *Tm) ServiceAll(w http.ResponseWriter, r *http.Request) {
+func (web *Tm) GalleryAll(w http.ResponseWriter, r *http.Request) {
 	var InstRes []model.Service
 	Inst := model.NewService()
 
@@ -37,7 +37,7 @@ func (web *Tm) ServiceAll(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(data)
 }
-func (web *Tm) ServiceRemove(w http.ResponseWriter, r *http.Request) {
+func (web *Tm) GalleryRemove(w http.ResponseWriter, r *http.Request) {
 	var req model.Wservice
 	Inst := model.NewService()
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
@@ -54,7 +54,7 @@ func (web *Tm) ServiceRemove(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write(data)
 }
-func (web *Tm) ServiceModified(w http.ResponseWriter, r *http.Request) {
+func (web *Tm) GalleryModified(w http.ResponseWriter, r *http.Request) {
 	var req model.Wservice
 	Inst := model.NewService()
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {

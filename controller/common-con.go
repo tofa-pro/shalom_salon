@@ -15,7 +15,7 @@ func StartM(t *template.Template) *Tm {
 	}
 }
 func (web *Tm) IndexHandler(w http.ResponseWriter, r *http.Request) {
-	err := web.Tmp.ExecuteTemplate(w, "index.html", nil)
+	err := web.Tmp.ExecuteTemplate(w, "admin2.html", nil)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
