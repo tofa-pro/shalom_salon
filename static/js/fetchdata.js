@@ -16,6 +16,24 @@ async function singledata(param1,param2) {
     }
     
 }
+async function singledata2(param1,param2) {
+    try {
+        const response = await fetch (`/${param1}`,{
+            method: 'POST',   // HTTP method
+            body: param2,
+            enctype:"multipart/form-data"
+         });
+        if (!response.ok) {
+            throw new Error("Could not fetch resource");
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+    
+}
 async function alldata(param) {
     try {
         const response = await fetch (`/${param}`)

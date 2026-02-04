@@ -32,10 +32,16 @@ func setupAPI() {
 	http.HandleFunc("/", Manager.IndexHandler)
 	http.HandleFunc("/admin", Manager.AdminHandler)
 
-	//Device
+	//Service
 	http.HandleFunc("/services", Manager.ServiceAll)
 	http.HandleFunc("/servicecreate", Manager.ServiceCreate)
 	http.HandleFunc("/servicedelete", Manager.ServiceRemove)
 	http.HandleFunc("/serviceupdate", Manager.ServiceModified)
+
+	//Gallery
+	http.HandleFunc("/gallery", Manager.GalleryAll)
+	http.HandleFunc("/gallerycreate", Manager.GalleryCreate)
+	http.HandleFunc("/gallerydelete", Manager.GalleryRemove)
+	http.HandleFunc("/galleryupdate", Manager.GalleryModified)
 
 }
